@@ -1,3 +1,4 @@
+import os
 import json
 import requests
 from flask import Flask
@@ -29,5 +30,8 @@ def processRequest(req):
     nft_type = parameters.get("nft_type")
     
 
+   
 if __name__ == '__main__':
-   app.run()
+    port = int(os.getenv('PORT', 5000))
+    print("Starting app on port %d" % port)
+    app.run(debug=False, port=port, host='0.0.0.0')

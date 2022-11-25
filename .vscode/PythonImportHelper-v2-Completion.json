@@ -180,7 +180,7 @@
         "kind": 2,
         "importPath": "views",
         "description": "views",
-        "peekOfCode": "def processRequest(req):\n    sessionID = req.get('responseId')\n    result = req.get(\"queryResult\")\n    user_says = result.get(\"queryText\")\n    parameters = result.get(\"parameters\")\n    wallet_address= parameters.get(\"wallet_address\")\n    nft_type = parameters.get(\"nft_type\")\nif __name__ == '__main__':\n   app.run()",
+        "peekOfCode": "def processRequest(req):\n    sessionID = req.get('responseId')\n    result = req.get(\"queryResult\")\n    user_says = result.get(\"queryText\")\n    parameters = result.get(\"parameters\")\n    wallet_address= parameters.get(\"wallet_address\")\n    nft_type = parameters.get(\"nft_type\")\nif __name__ == '__main__':\n    port = int(os.getenv('PORT', 5000))\n    print(\"Starting app on port %d\" % port)",
         "detail": "views",
         "documentation": {}
     },
