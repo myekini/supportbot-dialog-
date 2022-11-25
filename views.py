@@ -3,7 +3,7 @@ import json
 from flask import Flask
 from flask import Flask, request, make_response
 from Send_email.send_mail import EmailSender
-
+from email_template.template_reader import TemplateReader
 app = Flask(__name__)
 
 
@@ -34,7 +34,8 @@ def processRequest(req):
     
     if intent == "Balance intent":
         email = EmailSender()
-        email_message = "Your balance is 20eth"
+        template = TemplateReader()
+        email_message = template.read_course_template(nft_type)
         email.send_email_to_student(r_email, email_message)
 
    

@@ -1,6 +1,7 @@
 from email.message import EmailMessage
 import ssl
 import smtplib
+from email.mime.text import MIMEText
 class EmailSender:
 
     def send_email_to_student(self, r_email, message):
@@ -18,10 +19,25 @@ class EmailSender:
         # Add SSL (layer of security)
         context = ssl.create_default_context()
         
+        
+        # attach the body with the msg instance
+        email_message = email['Subject'].attach(MIMEText(message, 'html'))
+            
+        # Converts the Multipart msg into a string
+        self.text = self.msg.as_string()
+
         # Log in and send the email
         with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
             smtp.login(email_sender, email_password)
-            smtp.sendmail(email_sender, email_receiver, email.as_string())
+            smtp.sendmail(email_sender, email_receiver, email_message.as_string())
     
     def send_email_to_support(self):
         return "support working"
+
+            
+
+
+        
+
+
+            
