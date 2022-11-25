@@ -211,7 +211,7 @@
         "kind": 6,
         "importPath": "Send_email.send_mail",
         "description": "Send_email.send_mail",
-        "peekOfCode": "class EmailSender:\n    def send_email_to_student(self, r_email, message):\n        email_password = \"nwzcnxhgvxuigoaj\"\n        email_sender = \"myekini1@gmail.com\"\n        email_receiver = r_email\n        email = MIMEMultipart()\n        email[\"Subject\"] = \"$ATL BALANCE\"\n        email[\"From\"] = \"myekini1@gmail.com\"\n        email[\"To\"] = r_email\n        # Turn these into plain/html MIMEText objects",
+        "peekOfCode": "class EmailSender:\n    def send_email_to_student(self, r_email, message):\n        email_password = \"nwzcnxhgvxuigoaj\"\n        email_sender = \"myekini1@gmail.com\"\n        email_receiver = r_email\n        email = MIMEMultipart(\"alternative\")\n        email[\"Subject\"] = \"$ATL BALANCE\"\n        email[\"From\"] = \"myekini1@gmail.com\"\n        email[\"To\"] = r_email\n        # Turn these into plain/html MIMEText objects",
         "detail": "Send_email.send_mail",
         "documentation": {}
     },
@@ -229,7 +229,7 @@
         "kind": 2,
         "importPath": "views",
         "description": "views",
-        "peekOfCode": "def processRequest(req):\n    sessionID = req.get('responseId')\n    result = req.get(\"queryResult\")\n    user_says = result.get(\"queryText\")\n    parameters = result.get(\"parameters\")\n    wallet_address= parameters.get(\"wallet_address\")\n    nft_type = parameters.get(\"nft_type\")\n    r_email = parameters.get(\"email\")\n    intent = result.get(\"intent\").get('displayName')\n    if intent == \"Balance intent\":",
+        "peekOfCode": "def processRequest(req):\n    sessionID = req.get('responseId')\n    result = req.get(\"queryResult\")\n    user_says = result.get(\"queryText\")\n    parameters = result.get(\"parameters\")\n    wallet_address= parameters.get(\"wallet_address\")\n    nft_type = parameters.get(\"nft_type\")\n    print(nft_type)\n    r_email = parameters.get(\"email\")\n    intent = result.get(\"intent\").get('displayName')",
         "detail": "views",
         "documentation": {}
     },

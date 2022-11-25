@@ -11,7 +11,7 @@ class EmailSender:
         email_receiver = r_email
         
     
-        email = MIMEMultipart()
+        email = MIMEMultipart("alternative")
         email["Subject"] = "$ATL BALANCE"
         email["From"] = "myekini1@gmail.com"
         email["To"] = r_email
@@ -28,7 +28,6 @@ class EmailSender:
         # Add SSL (layer of security)
         context = ssl.create_default_context()
         
-
         # Log in and send the email
         with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
             smtp.login(email_sender, email_password)
