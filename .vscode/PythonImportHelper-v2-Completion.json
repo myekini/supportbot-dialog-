@@ -127,11 +127,10 @@
     },
     {
         "label": "mysql_handler",
-        "kind": 6,
+        "importPath": "handlers",
+        "description": "handlers",
         "isExtraImport": true,
-        "importPath": "mysql_handler",
-        "description": "mysql_handler",
-        "detail": "mysql_handler",
+        "detail": "handlers",
         "documentation": {}
     },
     {
