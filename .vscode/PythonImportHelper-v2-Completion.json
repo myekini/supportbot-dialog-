@@ -203,7 +203,7 @@
         "kind": 6,
         "importPath": "Send_email.send_mail",
         "description": "Send_email.send_mail",
-        "peekOfCode": "class EmailSender:\n    def send_email_to_student(self, r_email, message):\n        email_password = \"nwzcnxhgvxuigoaj\"\n        email_sender = \"myekini1@gmail.com\"\n        email_receiver = r_email\n        email = EmailMessage()\n        email['From '] = \"myekini1@gmail.com\"\n        email['To'] = r_email\n        email['Subject'] = \"$ATL BALANCE\"\n        email.set_content(message)",
+        "peekOfCode": "class EmailSender:\n    def send_email_to_student(self, r_email, message):\n        email_password = \"nwzcnxhgvxuigoaj\"\n        email_sender = \"myekini1@gmail.com\"\n        email_receiver = r_email\n        email = EmailMessage()\n        email['From '] = \"myekini1@gmail.com\"\n        email['To'] = r_email\n        email['Subject'] = \"$ATL BALANCE\"\n        # attach the body with the msg instance",
         "detail": "Send_email.send_mail",
         "documentation": {}
     },
