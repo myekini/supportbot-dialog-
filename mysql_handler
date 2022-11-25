@@ -1,0 +1,32 @@
+""" Database queries  """
+import os
+
+import pymysql
+
+# Connect to MySQL Database
+def get_Connection_db():
+    connection = pymysql.connect(host='localhost',
+                                 user='root',
+                                 password='08164',
+                                 db='support_bot',
+                                 charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor,
+                                 autocommit=True)
+    
+    return connection
+
+# CREATE TABLES 
+def createTables():
+    """ creates user table and columns """
+    connection = get_Connection_db()
+    with connection.cursor() as cursor:
+        tablename = "filters"
+        try:
+            cursor.execute(
+                "	CREATE TABLE `" + tablename + "` ( `id` BIGINT PRIMARY KEY AUTO_INCREMENT, `query` VARCHAR(255), `fulfillment` LONGTEXT DEFAULT NULL")
+            return createTables
+        except Exception as e:
+            print(e)
+            
+# FUNCTION CALLING
+createTables = createTables()

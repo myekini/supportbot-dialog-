@@ -4,6 +4,8 @@ from flask import Flask
 from flask import Flask, request, make_response
 from Send_email.send_mail import EmailSender
 from email_template.template_reader import TemplateReader
+import mysql_handler as sql
+
 app = Flask(__name__)
 
 
