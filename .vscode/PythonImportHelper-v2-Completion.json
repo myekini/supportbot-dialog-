@@ -78,14 +78,6 @@
         "documentation": {}
     },
     {
-        "label": "app",
-        "importPath": "views",
-        "description": "views",
-        "isExtraImport": true,
-        "detail": "views",
-        "documentation": {}
-    },
-    {
         "label": "bin_dir",
         "kind": 5,
         "importPath": "bot_env.Scripts.activate_this",
