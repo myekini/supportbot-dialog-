@@ -202,7 +202,7 @@
         "kind": 6,
         "importPath": "email_template.template_reader",
         "description": "email_template.template_reader",
-        "peekOfCode": "class TemplateReader:\n    def __init__(self):\n        pass\n    def read_course_template(self, nft_type):\n        try:\n            if (nft_type=='acre'):\n                email_file = open(\"email_templates/acre_balance.html\", \"r\")\n                email_message = email_file.read()\n            elif (nft_type=='plot'):\n                email_file = open(\"email_templates/plot_balance.html\", \"r\")",
+        "peekOfCode": "class TemplateReader:\n    def __init__(self):\n        pass\n    def read_course_template(self, nft_type):\n        try:\n            if (nft_type=='acre'):\n                email_file = open(\"email_template/acre_balance.html\", \"r\")\n                email_message = email_file.read()\n            elif (nft_type=='plot'):\n                email_file = open(\"email_template/plot_balance.html\", \"r\")",
         "detail": "email_template.template_reader",
         "documentation": {}
     },
