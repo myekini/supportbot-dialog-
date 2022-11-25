@@ -15,7 +15,8 @@ def webhook():
     res = processRequest(req)
     result = req.get('queryResult')
     intent = result.get("intent")
-    print(intent)
+    intent_2 = intent.get('displayName')
+    print(intent_2)
     res = json.dumps(res, indent=4)
     r = make_response(res)
     r.headers['Content-Type'] = 'application/json'
