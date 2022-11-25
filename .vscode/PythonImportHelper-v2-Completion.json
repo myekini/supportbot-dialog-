@@ -126,14 +126,6 @@
         "documentation": {}
     },
     {
-        "label": "mysql_handler",
-        "importPath": "handlers",
-        "description": "handlers",
-        "isExtraImport": true,
-        "detail": "handlers",
-        "documentation": {}
-    },
-    {
         "label": "bin_dir",
         "kind": 5,
         "importPath": "bot_env.Scripts.activate_this",
