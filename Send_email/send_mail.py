@@ -16,7 +16,7 @@ class EmailSender:
         email['Subject'] = "$ATL BALANCE"
         
         # attach the body with the msg instance
-        email_message = email['Subject'].attach(MIMEText(message, 'html'))
+        email_message = MIMEText(message, 'html')
         email.set_content(email_message)
         
         # Add SSL (layer of security)
