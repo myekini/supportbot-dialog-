@@ -62,6 +62,30 @@
         "documentation": {}
     },
     {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "make_response",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
         "label": "EmailSender",
         "importPath": "Send_email.send_mail",
         "description": "Send_email.send_mail",
@@ -163,7 +187,7 @@
         "kind": 2,
         "importPath": "views",
         "description": "views",
-        "peekOfCode": "def webhook():\n    req = requests.get_json(silent=True, force=True)\n    res = processRequest(req)\n    res = json.dumps(res, indent=4)\n    return res\n# processing the request from dialogflow\ndef processRequest(req):\n    sessionID = req.get('responseId')\n    result = req.get(\"queryResult\")\n    user_says = result.get(\"queryText\")",
+        "peekOfCode": "def webhook():\n    req = request.get_json(silent=True, force=True)\n    res = processRequest(req)\n    res = json.dumps(res, indent=4)\n    r = make_response(res)\n    r.headers['Content-Type'] = 'application/json'\n    return r\n# processing the request from dialogflow\ndef processRequest(req):\n    sessionID = req.get('responseId')",
         "detail": "views",
         "documentation": {}
     },
@@ -181,7 +205,7 @@
         "kind": 5,
         "importPath": "views",
         "description": "views",
-        "peekOfCode": "app = Flask(__name__)\n# geting and sending response to dialogflow\n@app.route('/webhook', methods=['POST'])\n@cross_origin()\ndef webhook():\n    req = requests.get_json(silent=True, force=True)\n    res = processRequest(req)\n    res = json.dumps(res, indent=4)\n    return res\n# processing the request from dialogflow",
+        "peekOfCode": "app = Flask(__name__)\n# geting and sending response to dialogflow\n@app.route('/', methods=['POST'])\n@cross_origin()\ndef webhook():\n    req = request.get_json(silent=True, force=True)\n    res = processRequest(req)\n    res = json.dumps(res, indent=4)\n    r = make_response(res)\n    r.headers['Content-Type'] = 'application/json'",
         "detail": "views",
         "documentation": {}
     }
