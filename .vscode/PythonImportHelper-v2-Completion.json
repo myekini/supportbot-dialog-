@@ -211,7 +211,7 @@
         "kind": 6,
         "importPath": "Send_email.send_mail",
         "description": "Send_email.send_mail",
-        "peekOfCode": "class EmailSender:\n    def send_email_to_student(self, r_email, message):\n        email_password = \"nwzcnxhgvxuigoaj\"\n        email_sender = \"myekini1@gmail.com\"\n        email_receiver = r_email\n        message = MIMEMultipart(\"alternative\")\n        message[\"Subject\"] = \"$ATL BALANCE\"\n        message[\"From\"] = \"myekini1@gmail.com\"\n        message[\"To\"] = r_email\n        # Turn these into plain/html MIMEText objects",
+        "peekOfCode": "class EmailSender:\n    def send_email_to_student(self, r_email, message):\n        email_password = \"nwzcnxhgvxuigoaj\"\n        email_sender = \"myekini1@gmail.com\"\n        email_receiver = r_email\n        message = MIMEMultipart()\n        message[\"Subject\"] = \"$ATL BALANCE\"\n        message[\"From\"] = \"myekini1@gmail.com\"\n        message[\"To\"] = r_email\n        # Turn these into plain/html MIMEText objects",
         "detail": "Send_email.send_mail",
         "documentation": {}
     },

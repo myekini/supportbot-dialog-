@@ -11,7 +11,7 @@ class EmailSender:
         email_receiver = r_email
         
     
-        message = MIMEMultipart("alternative")
+        message = MIMEMultipart()
         message["Subject"] = "$ATL BALANCE"
         message["From"] = "myekini1@gmail.com"
         message["To"] = r_email
