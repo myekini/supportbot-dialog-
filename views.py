@@ -1,19 +1,16 @@
 import os
 import json
-import requests
 from flask import Flask
 from flask import Flask, request, make_response
 from Send_email.send_mail import EmailSender
-from flask_cors import cross_origin
 
 app = Flask(__name__)
 
 
 # geting and sending response to dialogflow
-@app.route('/', methods=['POST'])
-@cross_origin()
-def webhook():
+@app.route('/', methods=['GET', 'POST'])
 
+def webhook():
     req = request.get_json(silent=True, force=True)
     res = processRequest(req)
     res = json.dumps(res, indent=4)
