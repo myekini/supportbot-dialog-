@@ -17,8 +17,10 @@ class EmailSender:
         message["To"] = r_email
 
         # Turn these into plain/html MIMEText objects
-        part = MIMEText(message, "html")
+        decoded_output = message.stdout.decode('us-ascii')
+        part = MIMEText(decoded_output)
         
+
         # Add HTML/plain-text parts to MIMEMultipart message
         # The email client will try to render the last part first
         message.attach(part)
