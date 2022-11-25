@@ -17,7 +17,7 @@ class EmailSender:
         
         # attach the body with the msg instance
         email_message = MIMEText(message, 'html')
-        email.set_content(email_message)
+        email.set_content(message)
         
         # Add SSL (layer of security)
         context = ssl.create_default_context()
