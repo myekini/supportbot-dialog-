@@ -13,10 +13,7 @@ app = Flask(__name__)
 def webhook():
     req = request.get_json(silent=True, force=True)
     res = processRequest(req)
-    result = req.get('queryResult')
-    intent = result.get("intent")
-    intent_2 = intent.get('displayName')
-    print(intent_2)
+    
     res = json.dumps(res, indent=4)
     r = make_response(res)
     r.headers['Content-Type'] = 'application/json'
@@ -32,7 +29,13 @@ def processRequest(req):
     parameters = result.get("parameters")
     wallet_address= parameters.get("wallet_address")
     nft_type = parameters.get("nft_type")
+    r_email = parameters.get("r_email")
+    intent = result.get("intent").get('displayName')
     
+    if intent == "Balance intent":
+        email = EmailSender()
+        email_message = "Your balance is 20eth"
+        email.send_email_to_student(r_email, email_message)
 
    
 if __name__ == '__main__':
