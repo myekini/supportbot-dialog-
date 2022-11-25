@@ -170,7 +170,7 @@
         "kind": 2,
         "importPath": "views",
         "description": "views",
-        "peekOfCode": "def webhook():\n    req = request.get_json(silent=True, force=True)\n    res = processRequest(req)\n    print(req.get('responseId'))\n    res = json.dumps(res, indent=4)\n    r = make_response(res)\n    r.headers['Content-Type'] = 'application/json'\n    return r\n# processing the request from dialogflow\ndef processRequest(req):",
+        "peekOfCode": "def webhook():\n    req = request.get_json(silent=True, force=True)\n    res = processRequest(req)\n    result = req.get('queryResult')\n    intent = result.get(\"intent\")\n    print(intent)\n    res = json.dumps(res, indent=4)\n    r = make_response(res)\n    r.headers['Content-Type'] = 'application/json'\n    return r",
         "detail": "views",
         "documentation": {}
     },
@@ -188,7 +188,7 @@
         "kind": 5,
         "importPath": "views",
         "description": "views",
-        "peekOfCode": "app = Flask(__name__)\n# geting and sending response to dialogflow\n@app.route('/', methods=['GET', 'POST'])\ndef webhook():\n    req = request.get_json(silent=True, force=True)\n    res = processRequest(req)\n    print(req.get('responseId'))\n    res = json.dumps(res, indent=4)\n    r = make_response(res)\n    r.headers['Content-Type'] = 'application/json'",
+        "peekOfCode": "app = Flask(__name__)\n# geting and sending response to dialogflow\n@app.route('/', methods=['GET', 'POST'])\ndef webhook():\n    req = request.get_json(silent=True, force=True)\n    res = processRequest(req)\n    result = req.get('queryResult')\n    intent = result.get(\"intent\")\n    print(intent)\n    res = json.dumps(res, indent=4)",
         "detail": "views",
         "documentation": {}
     }
