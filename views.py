@@ -29,7 +29,7 @@ def processRequest(req):
     parameters = result.get("parameters")
     wallet_address= parameters.get("wallet_address")
     nft_type = parameters.get("nft_type")
-    r_email = parameters.get("r_email")
+    r_email = parameters.get("email")
     intent = result.get("intent").get('displayName')
     
     if intent == "Balance intent":
