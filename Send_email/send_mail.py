@@ -11,19 +11,18 @@ class EmailSender:
         email_receiver = r_email
         
     
-        message = MIMEMultipart()
-        message["Subject"] = "$ATL BALANCE"
-        message["From"] = "myekini1@gmail.com"
-        message["To"] = r_email
+        email = MIMEMultipart()
+        email["Subject"] = "$ATL BALANCE"
+        email["From"] = "myekini1@gmail.com"
+        email["To"] = r_email
 
         # Turn these into plain/html MIMEText objects
-        decoded_output = message.stdout.decode('us-ascii')
-        part = MIMEText(decoded_output)
+        part = MIMEText(message, "html")
         
 
         # Add HTML/plain-text parts to MIMEMultipart message
         # The email client will try to render the last part first
-        message.attach(part)
+        email.attach(part)
 
         
         # Add SSL (layer of security)
@@ -33,7 +32,7 @@ class EmailSender:
         # Log in and send the email
         with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
             smtp.login(email_sender, email_password)
-            smtp.sendmail(email_sender, email_receiver, message.as_string())
+            smtp.sendmail(email_sender, email_receiver, email.as_string())
     
     def send_email_to_support(self):
         return "support working"
