@@ -61,6 +61,14 @@
         "documentation": {}
     },
     {
+        "label": "MIMEMultipart",
+        "importPath": "email.mime.multipart",
+        "description": "email.mime.multipart",
+        "isExtraImport": true,
+        "detail": "email.mime.multipart",
+        "documentation": {}
+    },
+    {
         "label": "json",
         "kind": 6,
         "isExtraImport": true,
@@ -203,7 +211,7 @@
         "kind": 6,
         "importPath": "Send_email.send_mail",
         "description": "Send_email.send_mail",
-        "peekOfCode": "class EmailSender:\n    def send_email_to_student(self, r_email, message):\n        email_password = \"nwzcnxhgvxuigoaj\"\n        email_sender = \"myekini1@gmail.com\"\n        email_receiver = r_email\n        email = EmailMessage()\n        email['From '] = \"myekini1@gmail.com\"\n        email['To'] = r_email\n        email['Subject'] = \"$ATL BALANCE\"\n        # attach the body with the msg instance",
+        "peekOfCode": "class EmailSender:\n    def send_email_to_student(self, r_email, message):\n        email_password = \"nwzcnxhgvxuigoaj\"\n        email_sender = \"myekini1@gmail.com\"\n        email_receiver = r_email\n        message = MIMEMultipart(\"alternative\")\n        message[\"Subject\"] = \"$ATL BALANCE\"\n        message[\"From\"] = \"myekini1@gmail.com\"\n        message[\"To\"] = r_email\n        # Turn these into plain/html MIMEText objects",
         "detail": "Send_email.send_mail",
         "documentation": {}
     },
