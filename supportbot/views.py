@@ -3,7 +3,7 @@ import json
 from flask import Flask
 from flask import Flask, request, make_response
 from resources.Send_email.send_mail import EmailSender
-from resources.email_template.template_reader import TemplateReader
+from resources.template_reader import TemplateReader
 
 
 app = Flask(__name__)
