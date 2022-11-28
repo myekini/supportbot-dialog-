@@ -1,1 +1,1 @@
-web: python views.py
+web: python supportbot/views.py
