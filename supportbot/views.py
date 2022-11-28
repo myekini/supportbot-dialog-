@@ -2,8 +2,8 @@ import os
 import json
 from flask import Flask
 from flask import Flask, request, make_response
-from Send_email.send_mail import EmailSender
-from email_template.template_reader import TemplateReader
+from resources.Send_email.send_mail import EmailSender
+from resources.email_template.template_reader import TemplateReader
 
 
 app = Flask(__name__)
@@ -31,17 +31,20 @@ def processRequest(req):
     parameters = result.get("parameters")
     wallet_address= parameters.get("wallet_address")
     nft_type = parameters.get("nft_type")
-    print(nft_type)
     r_email = parameters.get("email")
     intent = result.get("intent").get('displayName')
     
+    # process email automation with user information
     if intent == "Balance intent":
         email = EmailSender()
         template = TemplateReader()
         email_message = template.read_course_template(nft_type)
         email.send_email_to_student(r_email, email_message)
 
-   
+
+
+
+
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
     print("Starting app on port %d" % port)
