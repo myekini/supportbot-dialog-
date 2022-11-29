@@ -1,9 +1,12 @@
 import os
+import pymongo
+from pymongo import MongoClient
 import json
 from flask import Flask
 from flask import Flask, request, make_response
 from resources.Send_email.send_mail import EmailSender
 from resources.template_reader import TemplateReader
+from .resources.handlers import mongodb
 
 
 app = Flask(__name__)
@@ -21,10 +24,16 @@ def webhook():
     r.headers['Content-Type'] = 'application/json'
     return r
 
+def configureDatabase():
+    """Configures the database"""
+    client = pymongo.MongoClient("mongodb+srv://myekini:<password>@cluster0.qinyqn8.mongodb.net/?retryWrites=true&w=majority")
+    return client.get_database('supportbot')
+
 
 # processing the request from dialogflow
 def processRequest(req):
-   
+    print(req)
+    log = mongodb.Log()
     sessionID = req.get('responseId')
     result = req.get("queryResult")
     user_says = result.get("queryText")
@@ -33,6 +42,7 @@ def processRequest(req):
     nft_type = parameters.get("nft_type")
     r_email = parameters.get("email")
     intent = result.get("intent").get('displayName')
+    db = configureDatabase()
     
     # process email automation with user information
     if intent == "Balance intent":
@@ -40,6 +50,11 @@ def processRequest(req):
         template = TemplateReader()
         email_message = template.read_course_template(nft_type)
         email.send_email_to_student(r_email, email_message)
+        
+        # response
+        # webhookresponse = " "
+        #save converstion into database
+        # log.saveConversations(sessionID, intent, user_says, db)
 
 
 
