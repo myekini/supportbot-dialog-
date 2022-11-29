@@ -11,7 +11,7 @@ class Log:
         self.date = self.now.date()
         self.current_time = self.now.strftime("%H:%M:%S")
 
-        mydict = {"sessionID":sessionID,"User Intent" : intent ,"User": usermessage, "Bot": botmessage, "Date": str(self.date) + "/" + str(self.current_time)}
+        mydict = {"sessionID":sessionID, "User Intent" : intent , "User": usermessage, "Bot": botmessage, "Date": str(self.date) + "/" + str(self.current_time)}
 
         records = dbConn.chat_records
         records.insert_one(mydict)

@@ -32,7 +32,6 @@ def configureDatabase():
 
 # processing the request from dialogflow
 def processRequest(req):
-    print(req)
     log = Log()
     sessionID = req.get('responseId')
     result = req.get("queryResult")
@@ -42,6 +41,8 @@ def processRequest(req):
     nft_type = parameters.get("nft_type")
     r_email = parameters.get("email")
     intent = result.get("intent").get('displayName')
+    response = req.get('fulfillmentText')
+    print(response)
     db = configureDatabase()
     
     # process email automation with user information
@@ -50,11 +51,9 @@ def processRequest(req):
         template = TemplateReader()
         email_message = template.read_course_template(nft_type)
         email.send_email_to_student(r_email, email_message)
-        
-        # response
-        # webhookresponse = " "
+    
         #save converstion into database
-        # log.saveConversations(sessionID, intent, user_says, db)
+        log.saveConversations(sessionID, intent, user_says, response, db)
 
 
 
