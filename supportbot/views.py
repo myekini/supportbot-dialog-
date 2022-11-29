@@ -26,7 +26,7 @@ def webhook():
 
 def configureDatabase():
     """Configures the database"""
-    client = pymongo.MongoClient("mongodb+srv://myekini:<password>@cluster0.qinyqn8.mongodb.net/?retryWrites=true&w=majority")
+    client = pymongo.MongoClient("mongodb+srv://myekini:Muhammadyk1@cluster0.qinyqn8.mongodb.net/?retryWrites=true&w=majority")
     return client.get_database('supportbot')
 
 
