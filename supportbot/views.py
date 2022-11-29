@@ -37,11 +37,12 @@ def processRequest(req):
     result = req.get("queryResult")
     user_says = result.get("queryText")
     parameters = result.get("parameters")
+    response = result.get('fulfillmentText')
     wallet_address= parameters.get("wallet_address")
     nft_type = parameters.get("nft_type")
     r_email = parameters.get("email")
     intent = result.get("intent").get('displayName')
-    response = req.get('fulfillmentText')
+    
     print(response)
     db = configureDatabase()
     

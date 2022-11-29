@@ -5,7 +5,7 @@ class Log:
     def __init__(self):
         pass
 
-    def saveConversations(self, sessionID, usermessage,botmessage,intent,dbConn):
+    def saveConversations(self, sessionID,intent, usermessage, botmessage,dbConn):
 
         self.now = datetime.now()
         self.date = self.now.date()
