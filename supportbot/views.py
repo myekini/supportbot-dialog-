@@ -6,7 +6,7 @@ from flask import Flask
 from flask import Flask, request, make_response
 from resources.Send_email.send_mail import EmailSender
 from resources.template_reader import TemplateReader
-from .resources.handlers import mongodb
+from resources.handlers.mongodb import Log
 
 
 app = Flask(__name__)
@@ -33,7 +33,7 @@ def configureDatabase():
 # processing the request from dialogflow
 def processRequest(req):
     print(req)
-    log = mongodb.Log()
+    log = Log()
     sessionID = req.get('responseId')
     result = req.get("queryResult")
     user_says = result.get("queryText")
