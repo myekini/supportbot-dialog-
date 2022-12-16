@@ -42,8 +42,6 @@ def processRequest(req):
     nft_type = parameters.get("nft_type")
     r_email = parameters.get("email")
     intent = result.get("intent").get('displayName')
-    
-    print(response)
     db = configureDatabase()
     
     # process email automation with user information
@@ -55,7 +53,6 @@ def processRequest(req):
     
         #save converstion into database
         log.saveConversations(sessionID, intent, user_says, response, db)
-
 
 
 
