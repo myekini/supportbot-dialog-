@@ -15,6 +15,9 @@ app = Flask(__name__)
 # geting and sending response to dialogflow
 @app.route('/', methods=['GET', 'POST'])
 
+def hello_world():
+	return 'Hello World!'
+
 def webhook():
     req = request.get_json(silent=True, force=True)
     res = processRequest(req)
