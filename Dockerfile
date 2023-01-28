@@ -17,5 +17,5 @@ COPY . .
 
 
 # Start Gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "supportbot.views:app"]
+CMD ["gunicorn3", "--bind", "0.0.0.0:8000", "supportbot.views:app"]
 
