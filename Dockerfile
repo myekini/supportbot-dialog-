@@ -14,9 +14,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # copy entire project 
 COPY . .
+
+# change to the directory containing the Flask app
+WORKDIR /usr/src/app/supportbot
+
 EXPOSE 8000
 
 # Start Gunicorn
-# CMD [ "gunicorn", "--bind", "0.0.0.0:8080", "supportbot.views:app" ]
-CMD [ "python", "supportbot/views.py" ]
-
+CMD ["gunicorn" , "--bind" , "0.0.0.0:8000", "views:app"]
