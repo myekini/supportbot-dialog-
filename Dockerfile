@@ -10,7 +10,11 @@ ENV PYTHONUNBUFFERED 1
 
 #copy requirements.txt file from working directory & install dependencies
 COPY requirements.txt ./
+RUN apt-get update && \
+    apt-get install -y build-essential
+
 RUN pip install --no-cache-dir -r requirements.txt
+
 
 # copy entire project 
 COPY . .
@@ -21,4 +25,4 @@ WORKDIR /usr/src/app/supportbot
 EXPOSE 8000
 
 # Start Gunicorn
-CMD ["gunicorn" , "--bind" , "0.0.0.0:8000", "views:app"]
+CMD ["uwsgi" , "--socket" , "0.0.0.0:8000", "--protocol=http", "-w" "wsgi:app"]
