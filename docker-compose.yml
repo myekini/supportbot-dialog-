@@ -4,3 +4,15 @@ services:
     build: .
     ports:
       - 8000:8000
+
+  nginx:
+   container_name: nginx
+   image: nginx
+   restart: always
+   build:
+     context: ./nginx
+     dockerfile: nginx_Dockerfile
+   ports:
+     - "8080:8080"
+   depends_on:
+     - support_bot

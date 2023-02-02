@@ -22,7 +22,6 @@ COPY . .
 # change to the directory containing the Flask app
 WORKDIR /usr/src/app/supportbot
 
-EXPOSE 8000
 
 # Start Gunicorn
-CMD ["uwsgi" , "--socket" , "0.0.0.0:8000", "--protocol=http", "-w" "wsgi:app"]
+CMD ["uwsgi" , "supportbot.ini"]
