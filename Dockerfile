@@ -23,5 +23,5 @@ COPY . .
 WORKDIR /usr/src/app/supportbot
 
 
-CMD [ "uvicorn", "supportbot.app:app" , "--host", "0.0.0.0", "--port", "8010", "--reload"]
+CMD [ "uwsgi", "supportbot.ini"]
 

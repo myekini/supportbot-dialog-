@@ -3,15 +3,13 @@ services:
   support_bot_fastapi:
     build: .
     ports:
-      - 8010:8010
+      - 8000:8000
 
   nginx:
    container_name: nginx_fastapi
    image: nginx
    restart: always
-   build:
-     context: ./nginx
-     dockerfile: nginx_Dockerfile
+   build: ./nginx
    ports:
      - "8080:8080"
    depends_on:
