@@ -3,7 +3,7 @@ services:
   support_bot:
     build: .
     ports:
-      - 8000:8000
+      - 8010:8010
 
   nginx:
    container_name: nginx

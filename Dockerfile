@@ -23,5 +23,5 @@ COPY . .
 WORKDIR /usr/src/app/supportbot
 
 
-# Start Gunicorn
-CMD ["uwsgi" , "supportbot.ini"]
+CMD [ "uvicorn", "supportbot.app:app" , "--host", "0.0.0.0", "--port", "8010", "--reload"]
+
