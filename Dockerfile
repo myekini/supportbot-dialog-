@@ -24,4 +24,4 @@ WORKDIR /usr/src/app/supportbot
 
 
 # Start Gunicorn
-CMD ["uwsgi" , "supportbot.ini"]
+CMD ["uwsgi", "--ini", "supportbot.ini"]

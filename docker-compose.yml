@@ -7,12 +7,14 @@ services:
 
   nginx:
    container_name: nginx
-   image: nginx
-   restart: always
-   build:
-     context: ./nginx
-     dockerfile: nginx_Dockerfile
-   ports:
-     - "8080:8080"
+   image: nginx:1.15-alpine
    depends_on:
      - support_bot
+   restart: always
+   build: ./nginx
+   ports:
+     - "8080:8080"
+   volumes:
+      - ./data/nginx:/etc/nginx/conf.d
+   
+
