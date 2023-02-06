@@ -1,6 +1,3 @@
-import json
-import requests
-
 from decouple import config
 from googleapiclient.discovery import build
 
