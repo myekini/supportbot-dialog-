@@ -7,6 +7,8 @@ from flask import Flask, request, make_response
 from resources.Send_email.send_mail import EmailSender
 from resources.template_reader import TemplateReader
 from resources.handlers.mongodb import Log
+from resources.apis.youtube import youtube
+from resources.apis.google_drive import google_drive
 
 
 app = Flask(__name__)
@@ -56,6 +58,13 @@ def processRequest(req):
     
         #save converstion into database
         log.saveConversations(sessionID, intent, user_says, response, db)
+        
+    elif intent == "AMA intent":
+        youtube()
+    elif intent == "PROJECT DOC intent":
+        google_drive()
+        
+        
 
 
 
