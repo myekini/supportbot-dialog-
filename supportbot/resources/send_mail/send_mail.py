@@ -5,7 +5,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 class EmailSender:
 
-    def send_email_to_student(self, r_email, message):
+    def send_email_to_user(self, r_email, message):
         email_password = "nwzcnxhgvxuigoaj"
         email_sender = "myekini1@gmail.com"
         email_receiver = r_email

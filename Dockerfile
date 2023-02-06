@@ -1,5 +1,5 @@
 # pull base image from docker hub
-FROM python:3.10-slim
+FROM tiangolo/uvicorn-gunicorn:python3.10-slim
 
 # set working directory
 WORKDIR /usr/src/app
@@ -10,9 +10,6 @@ ENV PYTHONUNBUFFERED 1
 
 #copy requirements.txt file from working directory & install dependencies
 COPY requirements.txt ./
-RUN apt-get update && \
-    apt-get install -y build-essential
-
 RUN pip install --no-cache-dir -r requirements.txt
 
 
@@ -20,8 +17,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # change to the directory containing the Flask app
-WORKDIR /usr/src/app/supportbot
+# WORKDIR /usr/src/app/supportbot
 
 
-CMD [ "uwsgi", "supportbot.ini"]
+CMD ["uvicorn", "supportbot.app:app", "--host", "0.0.0.0", "--port", "8000"]
 

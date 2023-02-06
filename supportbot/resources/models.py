@@ -1,9 +1,9 @@
 from pydantic import BaseModel
 
 class Intent(BaseModel):
-    first_name: str
-    last_name:str
     email: str
+    nft_type:str
+    intent: str
 
 
 class Placeholder(BaseModel):
