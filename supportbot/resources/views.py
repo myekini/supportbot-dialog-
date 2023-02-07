@@ -2,6 +2,8 @@ from fastapi import APIRouter
 from .models import Placeholder
 from .send_mail.send_mail import EmailSender
 from .send_mail.template import TemplateReader
+from .apis.youtube import youtube
+from .apis.google_drive import google_drive
 
 
 
@@ -25,6 +27,11 @@ async def srscore(placeholder:Placeholder):
         template = TemplateReader()
         email_message = template.read_course_template(nft_type)
         email.send_email_to_user(r_email, email_message)
+        
+    elif intent == "youtube":
+        youtube()
+    elif intent == "google_drive":
+        google_drive()
     return {"message": "HEllO FASTAPI"}
 
 
