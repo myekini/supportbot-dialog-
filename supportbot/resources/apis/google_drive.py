@@ -13,7 +13,7 @@ from googleapiclient.http import MediaIoBaseDownload
 # If modifying these scopes, delete the file token.json.
 SCOPES = ['https://www.googleapis.com/auth/drive.readonly']
 
-def google_drive():
+def google_drive(title):
     """Shows basic usage of the Drive v3 API.
     Prints the names and ids of the first 10 files the user has access to.
     """
@@ -42,7 +42,7 @@ def google_drive():
         results = service.files().list(
             pageSize=10, fields="nextPageToken, files(id, name)",
             spaces="drive",
-            q="mimeType='application/pdf'").execute()
+            q=f"mimeType='application/pdf' and trashed = false and fullText contains '{title}' ").execute()
         items = results.get('files', [])
 
         if not items:

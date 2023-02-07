@@ -34,7 +34,8 @@ async def srscore(placeholder:Placeholder):
         youtube(title)
         return {"message": "Video Fetched"}
     elif intent == "google_drive":
-        google_drive()
+        title_a = "COA"
+        google_drive(title_a)
         return {"message": "Document Fetched"}
     
 
