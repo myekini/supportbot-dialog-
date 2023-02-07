@@ -27,12 +27,16 @@ async def srscore(placeholder:Placeholder):
         template = TemplateReader()
         email_message = template.read_course_template(nft_type)
         email.send_email_to_user(r_email, email_message)
+        return {"message": "BALANCE Fetched"}
         
     elif intent == "youtube":
-        youtube()
+        title = "COA"
+        youtube(title)
+        return {"message": "Video Fetched"}
     elif intent == "google_drive":
         google_drive()
-    return {"message": "HEllO FASTAPI"}
+        return {"message": "Document Fetched"}
+    
 
 
 

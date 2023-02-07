@@ -3,19 +3,20 @@ from googleapiclient.discovery import build
 
 
 
-def youtube():
+def youtube(title):
     api_key = config("api_key")
     youtube = build('youtube', 'v3', developerKey=api_key)
 
     request = youtube.search().list(
-        part= "snippet",
+        part= "id",
         channelId = config("channel_id"),
-        q = "COA",
+        q = title,
         type = "video",
         order = "title"
         )
 
     response = request.execute()
-    full_res = response['items']
-    for f in full_res:
-        print(f['snippet']['title'])
+    video_link_array = [f"https://www.youtube.com/watch?v={video['id']['videoId']}" \
+                for video in response['items']]
+    print(video_link_array)
+        

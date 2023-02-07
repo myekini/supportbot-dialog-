@@ -1,16 +1,17 @@
 from __future__ import print_function
 
 import os.path
+import io
 
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
+from googleapiclient.http import MediaIoBaseDownload
 
 # If modifying these scopes, delete the file token.json.
-SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly']
-
+SCOPES = ['https://www.googleapis.com/auth/drive.readonly']
 
 def google_drive():
     """Shows basic usage of the Drive v3 API.
@@ -41,7 +42,7 @@ def google_drive():
         results = service.files().list(
             pageSize=10, fields="nextPageToken, files(id, name)",
             spaces="drive",
-            q="name contains 'COA'").execute()
+            q="mimeType='application/pdf'").execute()
         items = results.get('files', [])
 
         if not items:
@@ -51,6 +52,28 @@ def google_drive():
         for item in items:
             print(item)
             print(u'{0} ({1})'.format(item['name'], item['id']))
+                        
+            request = service.files().get_media(fileId=item['id'])
+            file_content = request.execute()
+            
+            # Write the file's content to a local file
+            with open("supportbot/resources/assets/" + item['name'], 'wb') as f:
+                f.write(file_content)
+
+            file = io.BytesIO()
+            downloader = MediaIoBaseDownload(file, request)
+            done = False
+            while done is False:
+                status, done = downloader.next_chunk()
+                print(F'Download {int(status.progress() * 100)}.')
+            return file.getvalue()
+    
     except HttpError as error:
         # TODO(developer) - Handle errors from drive API.
         print(f'An error occurred: {error}')
+        
+        
+
+        
+
+
